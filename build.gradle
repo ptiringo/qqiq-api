@@ -7,9 +7,12 @@ buildscript {
   }
 }
 
+configurations { provided }
+
 apply plugin: 'java'
 apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management'
+apply from: 'gradle/eclipse.gradle'
 
 jar {
   baseName = 'qqiq-api'
@@ -17,8 +20,6 @@ jar {
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-configurations { provided }
 
 sourceSets {
   main { compileClasspath += configurations.provided }
