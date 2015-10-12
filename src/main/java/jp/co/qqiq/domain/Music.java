@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +30,7 @@ public class Music {
   @Column(nullable = false)
   private String title;
 
+  @Temporal(TemporalType.DATE)
   private Date releaseDate;
 
   @OneToMany(mappedBy = "music")
