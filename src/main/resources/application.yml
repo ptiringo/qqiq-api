@@ -1,4 +1,9 @@
 spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
   datasource:
     driverClassName: org.h2.Driver
     url: jdbc:h2:mem:qqiq;DB_CLOSE_DELAY=-1
@@ -6,6 +11,19 @@ spring:
     password: 
     sql-script-encoding: UTF-8
   jpa:
+    database: H2
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.format_sql: true
+---
+spring:
+  profiles: heroku
+  datasource:
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: validate
