@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 public class Application {
@@ -22,6 +23,7 @@ public class Application {
     SpringApplication.run(Application.class, args);
   }
 
+  @Profile("pws")
   @Bean(destroyMethod = "close")
   DataSource dataSource() throws URISyntaxException {
     String url;
