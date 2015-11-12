@@ -27,15 +27,22 @@ sourceSets {
 
 repositories { mavenCentral() }
 
+def profile = project.hasProperty('profile') ? "$profile" : "development"
+
 dependencies {
   provided 'org.projectlombok:lombok:1.16.6'
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-web'
   compile 'org.flywaydb:flyway-core'
-  runtime 'com.h2database:h2'
-  runtime 'org.postgresql:postgresql:9.4-1204-jdbc4'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
   compile 'org.springframework.boot:spring-boot-starter-actuator'
+  
+  if (profile == 'development') {
+    runtime 'com.h2database:h2'
+  }
+  if (profile == 'production') {
+    runtime 'org.postgresql:postgresql:9.4-1204-jdbc4'
+  }
 }
 
 task stage {
