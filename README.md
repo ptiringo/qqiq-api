@@ -13,3 +13,21 @@ This is the project for the APIs about QQIQ.
 - [Lombok](https://projectlombok.org/)
 - [H2 Database](http://www.h2database.com/html/main.html)
 - [Flyway](http://flywaydb.org/)
+
+## Available Operation Commands
+### Gradle
+#### Build The Application for Development
+```
+./gradlew build
+```
+
+#### Build The Application for Production
+```
+./gradlew build -Pprofile=production
+```
+
+### Cloud Foundry
+#### Deploy The Application
+```
+cf push
+```
